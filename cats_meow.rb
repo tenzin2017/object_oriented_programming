@@ -17,8 +17,7 @@ class Cat
 
 
   def meow
-    eats_at
-    puts "My name is #{@name} and I eat #{@preferred_food} at #{@meal_time}"
+    puts "My name is #{@name} and I eat #{@preferred_food} at #{eats_at}"
   end
 
 end
