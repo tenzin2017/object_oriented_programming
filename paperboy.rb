@@ -3,25 +3,28 @@ class Paperboy
 
    def initialize(name)
      @name = name
-     @experience
-     @earnings
+     @experience = 0
+     @earnings = 0
 
    end
 
    def quota
-       quota = 50 + (@experience / 2)
+      return  quota = 50 + (@experience / 2)
    end
 
    def deliver(start_address, end_address)
 
-      @experience = (end_address - start_address).abs
-      if @experience == quota
-      @earnings = @experience* 0.25
-    elsif @experience > quota
-       @earnings = @experience*0.25 + (@experience - quota)*0.5
+      @house = (end_address - start_address + 1).abs
+
+    if @house == quota
+       @earnings += @house*0.25
+    elsif @house > quota
+       @earnings += @house*0.25 + ( @house- quota)*0.25
+    else
+       @earnings += @house * 0.25
+       @earnings -= 2
      end
-
-
+     @experience += @house
    end
 
 
@@ -31,12 +34,12 @@ class Paperboy
 
 end
 
-john = Paperboy.new("John")
-puts john.inspect
-puts john.quota
-puts john.deliver(101,160)
-puts john.report
-
-puts john.quota
-puts john.deliver(200,300)
-puts john.report
+tommy = Paperboy.new("Tommy")
+puts tommy.inspect
+puts tommy.quota
+puts tommy.deliver(101,160)
+puts tommy.inspect
+puts tommy.quota
+puts tommy.deliver(1, 75)
+puts tommy.inspect
+puts tommy.report
